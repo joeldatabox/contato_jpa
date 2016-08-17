@@ -23,7 +23,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "pes_pessoa")
-public class Pessoa implements Serializable {
+public class Pessoa implements Serializable, Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pes_id")
