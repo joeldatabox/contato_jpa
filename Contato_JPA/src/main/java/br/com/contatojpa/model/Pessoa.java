@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -44,7 +45,7 @@ public class Pessoa implements Serializable, Model{
     @Transient
     private String teste;
     
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "pes_pessoa")
     private List<Endereco> enderecos;
     
@@ -126,7 +127,9 @@ public class Pessoa implements Serializable, Model{
         this.enderecos = enderecos;
     }
     
-    
+    public void addEndereco(Endereco e){
+        this.enderecos.add(e);
+    }
 
     @Override
     public int hashCode() {
@@ -151,6 +154,11 @@ public class Pessoa implements Serializable, Model{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", nascimento=" + nascimento + ", observacao=" + observacao + ", sexo=" + sexo + ", teste=" + teste + ", enderecos=" + enderecos + '}';
     }
 
     
