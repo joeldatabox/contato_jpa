@@ -6,7 +6,7 @@
     <persistence-unit name="contato_jpa" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
-        <class>br.combr.com.contatojpa.model.Pessoa</class>
+        <class>br.com.contatojpa.model.Pessoa</class>
         
         <properties>
             <!-- Drive do banco-->
